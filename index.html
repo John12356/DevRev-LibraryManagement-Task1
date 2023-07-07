@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <nav class="nav-top">
+        <h3>DevRev Library</h3>
+        <div class="nav-right">
+            <input id="search-bar" placeholder="Search" type="text">
+            <button id="cart-btn">
+                <span id="cart-count">0</span>
+                <img src="images/icons8-cart-32.png" alt="">
+            </button>
+            <button id="filter-btn" onclick="filtertab()">
+                <img src="images/icons8-filter-50 (1).png" alt="">
+            </button>
+
+            <button id="login-btn">Login</button>
+        </div>
+    </nav>
+    <div class="filter-menu">
+        <!-- <div class="filterbydate">
+            <h5>start Date</h5>
+            <input id="start-d" type="date" name="" id="">
+            <h5>end Date</h5>
+            <input id="end-d" type="date" name="" id="">
+        </div> -->
+        <div id="filterbyauthor">
+            <h3>Filter By Author</h3>
+            <!-- <div class="author-selection">
+                <input type="radio" name="" id="">
+                <p>author <span>1</span></p>
+            </div> -->
+        </div>
+        <button id="filter-btn-2" onclick="filter()">Filter</button>
+    </div>
+
+    <div id="container">
+        <!-- <div class="card">
+            <h6 class="availability" >Stock</h6>
+            
+            <img class="book-img" src="images/photo_6140661206227203196_x.jpg" alt="">
+            <h4 class="book-name">Name</h4>
+            <p>Price: <span>$5</span></p>
+            <p>Aurthor: <span>Mr.X</span></p>
+            <button id="rent">Buy Now</button>
+        </div> -->
+    </div>
+    
+    <!-- login page -->
+
+    <div class="login-page">
+        <div id="flipper" >
+                <div class="login-page-container">
+                    <button class="login-close">X</button>
+                    <header class="login-page-header">
+                        <button class="login-name" onclick="signin()">sign in</button>
+                        <button class="login-name" onclick="signup()">sign up</button>
+                    </header>
+
+                    <form action="" class="login-details">
+                        <div class="form-group ">
+                            <!-- <label for="email">Email</label> -->
+                            <input type="text" name="email" id="login_email" class="form-control login-ip" placeholder="Enter your email">
+                          </div>
+                          
+                          <div class="form-group">
+                            <!-- <label for="password" >Password</label> -->
+                            <input type="password" name="password" id="login_password" class="form-control login-ip"  placeholder="Enter your password">
+                          </div>
+                          <button type="button" id="login" name="login" class="login-btn ">Login</button>
+                        </form>
+
+                    <div class="other-login">
+                        
+                        <button id="googleBtnIn" class="icon-google">
+                            <img src="images/icons8-google.svg" alt="">
+                        </button>
+                    </div>
+                    <button class="forgot-pass">forgot password?</button>
+                </div>
+    
+                <div class="login-page-container-reverse">
+                    <button class="login-close">X</button>
+                    <header class="login-page-header">
+                        <button class="login-name" onclick="signin()">sign in</button>
+                        <button class="login-name" onclick="signup()">sign up</button>
+                    </header>
+        
+                    <form action="" class="login-details">
+                    <div class="form-group ">
+                        <!-- <label for="email">Email</label> -->
+                        <input type="text" name="email" id="email" class="form-control login-ip" placeholder="Enter your email">
+                      </div>
+                      
+                      <div class="form-group">
+                        <!-- <label for="password" >Password</label> -->
+                        <input type="password" name="password" id="password" class="form-control login-ip"  placeholder="Enter your password">
+                      </div>
+                      <button type="button" id="register" name="register" class="login-btn ">REGISTER</button>
+                    </form>
+
+                      <div class="other-login">
+                        <button id="googleBtnUp" class="icon-google">
+                            <img src="images/icons8-google.svg" alt="">
+                        </button>
+                    </div>
+        
+                    <button class="forgot-pass" ></button>
+                </div>
+         </div>
+    </div>
+
+    <!-- cart page -->
+    <div class="cart-page">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h3 class="cart-name">CART</h3>
+                <button class="cart-close">X</button>
+            </div>
+            <div class="cart-content">
+                <!-- <div class="item-cart">
+                    <img src="images/photo_6140661206227203196_x.jpg" alt="">
+                    <p class="book-name-cart">my book</p>
+                    <p class="book-price">Rs.40</p>
+                    <button class="remove-cart">
+                        <img id="remove-cart-img" src="images/icons8-delete-30.png" alt="">
+                    </button>
+                </div>
+                <div class="item-cart">
+                    <img src="images/photo_6140661206227203196_x.jpg" alt="">
+                    <p class="book-name-cart">my book</p>
+                    <p class="book-price">Rs.40</p>
+                    <button class="remove-cart">
+                        <img id="remove-cart-img" src="images/icons8-delete-30.png" alt="">
+                    </button>
+                </div> -->
+                
+            </div>
+            <div id="final-cart">
+                <!-- <div class="total-price">
+                    <h2 class="total">Total</h2>
+                    <h2>Rs.1000</h2>
+                </div> -->
+            </div>
+            
+            <button  class="rent-btn">Rent</button>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+<script src="firebase.js" type="module"></script>
+
+</html>
